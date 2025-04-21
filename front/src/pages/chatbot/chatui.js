@@ -2,8 +2,39 @@ import { useEffect, useRef } from "react";
 import { Card, Input, Button, Typography, Space, Spin } from "antd";
 import { SendOutlined } from "@ant-design/icons";
 import "../../assets/css/chatui.css";
+import ReactMarkdown from "react-markdown";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-const { Paragraph, Text } = Typography;
+const {  Text } = Typography;
+
+const renderMessageContent = (msg) => {
+  return (
+    <ReactMarkdown
+      children={msg.content}
+      components={{
+        code({ node, inline, className, children, ...props }) {
+          return !inline ? (
+            <SyntaxHighlighter
+              style={oneDark}
+              language="javascript" // Or detect dynamically
+              PreTag="div"
+              {...props}
+            >
+              {String(children).replace(/\n$/, "")}
+            </SyntaxHighlighter>
+          ) : (
+            <code style={{ backgroundColor: "#eee", padding: "2px 4px" }}>
+              {children}
+            </code>
+          );
+        },
+        ol: ({ children }) => <ol style={{ paddingLeft: 20 }}>{children}</ol>,
+        ul: ({ children }) => <ul style={{ paddingLeft: 20 }}>{children}</ul>,
+      }}
+    />
+  );
+};
 
 const ChatUI = ({ messages, input, setInput, sendMessage, loading }) => {
   const chatEndRef = useRef(null);
@@ -55,12 +86,10 @@ const ChatUI = ({ messages, input, setInput, sendMessage, loading }) => {
               }}
             >
               <>
-                <Text strong style={{ color: "#fff" }}>
-                  {msg.role === "user" ? "You" : "Bot"}
-                </Text>
-                <Paragraph style={{ margin: 0, color: "white" }}>
-                  {msg.content}
-                </Paragraph>
+                <div>
+                  <Text strong>{msg.role === "user" ? "You" : "Bot"}:</Text>
+                  {renderMessageContent(msg)}
+                </div>
               </>
             </div>
           </div>
