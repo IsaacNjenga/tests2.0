@@ -1,0 +1,24 @@
+/* stream.css */
+.str-video {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #0f0f0f; /* Dark background for better contrast */
+  }
+  
+  .str-video__call-controls {
+    background-color: #1a1a1a !important;
+  }
+  
+  .str-video__button {
+    color: white !important;
+  }
+
+  .video-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+  }

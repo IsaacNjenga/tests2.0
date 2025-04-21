@@ -12,6 +12,7 @@ function Navbar() {
     { label: "Home", path: "/" },
     { label: "PDF", path: "/upload-pdf" },
     { label: "ChatBot", path: "/chatbot" },
+    { label: "Stream", path: "/stream" },
   ];
 
   const handleClick = (e) => {
