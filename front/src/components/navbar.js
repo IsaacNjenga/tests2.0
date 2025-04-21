@@ -11,6 +11,7 @@ function Navbar() {
   const navItems = [
     { label: "Home", path: "/" },
     { label: "PDF", path: "/upload-pdf" },
+    { label: "ChatBot", path: "/chatbot" },
   ];
 
   const handleClick = (e) => {

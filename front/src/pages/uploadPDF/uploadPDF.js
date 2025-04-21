@@ -89,9 +89,21 @@ function UploadPdf() {
 
   return (
     <>
-      <div>
+      <div
+        style={{
+          background: "#bae637",
+        }}
+      >
         {" "}
-        <Title level={2} style={{ textAlign: "center", marginBottom: "30px" }}>
+        <Title
+          level={2}
+          style={{
+            textAlign: "center",
+            marginBottom: "30px",
+            color: "#fa541c",
+            background: "#fff2e8",
+          }}
+        >
           Upload your PDF document
         </Title>
         <Card>

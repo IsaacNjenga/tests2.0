@@ -1,0 +1,11 @@
+.custom-chat-input {
+  background: transparent; /* or rgba(0, 0, 0, 0) */
+  color: black;
+  border: 1px solid #808080; /* grey color in hex */
+  border-radius: 4px; /* optional: adds rounded corners */
+}
+
+.custom-chat-input::placeholder {
+  color: white;
+  opacity: 0.7; /* optional for dimmed look */
+}
